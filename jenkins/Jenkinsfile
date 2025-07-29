@@ -1,0 +1,19 @@
+pipeline {
+  agent any
+  environment {
+    AWS_REGION = 'ap-south-1'
+    DB_PASSWORD = credentials('secureops-db-pass')
+  }
+  stages {
+    stage('Checkout')         { steps { checkout scm } }
+    stage('Lint Ansible')     { steps { sh 'ansible-lint ansible/' } }
+    stage('Provision AWS')    { steps { sh 'ansible-playbook ansible/playbooks/provision.yml -i ansible/inventory/aws_ec2.yml' } }
+    stage('Compliance Scan')  { steps { sh 'ansible-playbook ansible/playbooks/compliance.yml -i ansible/inventory/aws_ec2.yml' } }
+    stage('Remediation')      { steps { sh 'ansible-playbook ansible/playbooks/remediation.yml -i ansible/inventory/aws_ec2.yml' } }
+    stage('Grafana Provision'){ steps { sh 'ansible-playbook ansible/playbooks/grafana.yml -i ansible/inventory/aws_ec2.yml' } }
+  }
+  post {
+    success { echo '✅ SecureOps Enforcer Deployed Successfully' }
+    failure { mail to: 'you@example.com', subject: 'Pipeline Failed', body: currentBuild.fullDisplayName }
+  }
+}

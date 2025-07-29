@@ -1,0 +1,16 @@
+- name: Install Chef
+  apt:
+    name: chef
+    state: present
+
+- name: Upload Chef cookbooks
+  copy:
+    src: ../cookbooks/
+    dest: /var/chef/cookbooks
+
+- name: Run Chef client for remediation
+  shell: chef-client -z
+
+- name: Report remediation status
+  debug:
+    msg: "Chef remediation completed on {{ inventory_hostname }}"

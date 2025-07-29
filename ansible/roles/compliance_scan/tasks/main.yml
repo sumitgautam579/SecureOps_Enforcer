@@ -1,0 +1,18 @@
+- name: Deploy SonarQube scanner container
+  community.docker.docker_container:
+    name: sonar-scanner
+    image: sonarsource/sonar-scanner-cli
+    state: started
+    restart_policy: never
+
+- name: Run Fortify scan
+  shell: sourceanalyzer -b secureops -clean && sourceanalyzer -b secureops -scan -f results.fpr
+
+- name: Run AppScan
+  shell: AppScan.sh -scan -project secureops -results results.xml
+
+- name: Gather scan reports
+  fetch:
+    src: /var/reports/
+    dest: ./reports/
+    flat: yes

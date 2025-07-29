@@ -1,0 +1,27 @@
+- name: Create VPC
+  community.aws.ec2_vpc_net:
+    cidr_block: '{{ vpc_cidr }}'
+    state: present
+    tags:
+      Name: secureops-vpc
+
+- name: Provision ECS cluster
+  community.aws.ecs_cluster:
+    name: '{{ cluster_name }}'
+    state: present
+
+- name: Create RDS MySQL
+  community.aws.rds_instance:
+    db_instance_identifier: secureops-db
+    engine: mysql
+    instance_class: db.t2.micro
+    allocated_storage: 20
+    username: admin
+    password: '{{ db_password }}'
+    tags:
+      Role: secureops
+
+- name: Create S3 bucket for logs
+  community.aws.s3_bucket:
+    name: '{{ s3_bucket_logs }}'
+    state: present

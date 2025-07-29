@@ -1,0 +1,8 @@
+aws_region: ap-south-1
+ssh_key_name: your-ssh-key
+db_password: ChangeMe123!
+s3_bucket_logs: secureops-logs-bucket
+grafana_admin_user: admin
+grafana_admin_password: admin123
+kafka_nodes: 3
+zookeeper_nodes: 3

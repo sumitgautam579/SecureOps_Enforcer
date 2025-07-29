@@ -1,0 +1,8 @@
+- hosts: secureops
+  become: true
+  connection: ssh
+  gather_facts: false
+  vars_files:
+    - ../group_vars/all.yml
+  roles:
+    - compliance_scan
