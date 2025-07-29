@@ -26,7 +26,8 @@ This repository demonstrates a fully automated, self‑healing DevSecOps pipelin
 
 ## 🏗️ Architecture
 
-![SecureOps Enforcer Architecture](.doc/ARCH_SecureOps_enforcer.png)
+[SecureOps Enforcer Architecture Diagram](.doc/ARCH_SecureOps_enforcer.png)
+
 
 ## 📁 Repository Structure
 
