@@ -44,13 +44,13 @@ secureops-enforcer/                 # Project root
 ## 🚀 Getting Started
 
 1. **Fork this repository**
-    - Click the Fork button [![Fork me on GitHub](https://img.shields.io/badge/Fork%20me-blue.svg)](https://github.com/sumitgautam579/SecureOps-Enforcer.git) 
+    - Click the Fork button [![Fork me on GitHub](https://img.shields.io/badge/Fork%20me-blue.svg)](https://github.com/sumitgautam579/SecureOps_Enforcer.git) 
 
 
 2. **Clone the repository**
 
    ```bash
-   git clone https://github.com/sumitgautam579/SecureOps-Enforcer.git
+   git clone https://github.com/sumitgautam579/SecureOps_Enforcer.git
    cd secureops-enforcer
    ```
 
