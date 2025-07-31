@@ -136,3 +136,4 @@ Contributions and improvements are welcome! Please file an issue for suggestions
 
 © 2025 **SecureOps-Enforcer** DEMO / **Sumit_Gautam_Devops_Engineer**
 
+Licensed under the LGPL-2.1 License. See LICENSE for details.
